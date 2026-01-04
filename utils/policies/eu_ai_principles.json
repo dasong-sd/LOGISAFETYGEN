@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Human Agency and Oversight",
+        "description": "Policies that ensure the AI system remains under human control and that its actions are verifiably aligned with human intent and can be overseen by humans."
+    },
+    {
+        "name": "Technical Robustness and Safety",
+        "description": "Policies related to the system's resilience against errors, faults, or inconsistencies, its accuracy, reliability, and its ability to minimize unintended harm."
+    },
+    {
+        "name": "Privacy and Data Governance",
+        "description": "Policies concerning data protection in compliance with existing privacy rules, and ensuring high standards of data quality and integrity."
+    },
+    {
+        "name": "Transparency",
+        "description": "Policies that require the system to be understandable, its operations traceable, and that humans are made aware they are interacting with an AI system."
+    },
+    {
+        "name": "Diversity, Non-discrimination and Fairness",
+        "description": "Policies that promote equal access, avoid discriminatory impacts, and prevent unfair biases prohibited by law."
+    },
+    {
+        "name": "Societal and Environmental Well-being",
+        "description": "Policies that ensure the AI system is used in a sustainable and environmentally friendly manner and benefits all human beings, while assessing long-term societal impacts."
+    }
+]

@@ -1,0 +1,75 @@
+{
+  "deduplication_analysis": [
+    {
+      "representative_policy": {
+        "policy_description": "Access to sensitive device functionality must only be possible after a successful authorization check.",
+        "scope": "Access Control",
+        "definition": "Refined from ESTI-POLICY-026 ('Access... should only be possible after authentication') and ESTI-POLICY-027 ('security-relevant configuration changes... must only be accessible after authentication'). Maps authentication to a verifiable 'CheckAuthorization' API call.",
+        "reference": {
+          "source_id": "ESTI-POLICY-026 / ESTI-POLICY-027 has been aggregated into source_ids below; see merged_policies for originals (original inputs used singular 'source_id'). This representative has aggregated source_ids in the final_policies list as well."
+        }
+      },
+      "justification": "The three policies enforce the same core constraint: network-accessible, sensitive or security-relevant IoT functionality must be gated by an authentication/authorization check before access is allowed. The third policy is the clearest and most precise (explicitly names an authorization check and maps to a verifiable API), so it was chosen as the representative. The other two are semantically equivalent (require authentication on the network interface for initialized devices or security-relevant configuration changes) and therefore were merged into this representative.",
+      "merged_policies": [
+        {
+          "policy_description": "Access to consumer IoT device functionality via a network interface in the initialized state should only be possible after authentication on that interface.",
+          "scope": "in the initialized state",
+          "definition": "",
+          "reference": {
+            "source_id": "ESTI"
+          }
+        },
+        {
+          "policy_description": "Consumer IoT device functionality that allows security-relevant changes in configuration via a network interface shall only be accessible after authentication.",
+          "scope": "None",
+          "definition": "",
+          "reference": {
+            "source_id": "ESTI"
+          }
+        }
+      ]
+    }
+  ],
+  "final_policies": [
+    {
+      "policy_description": "Access to sensitive device functionality must only be possible after a successful authorization check.",
+      "scope": "Access Control",
+      "definition": "Refined from ESTI-POLICY-026 ('Access... should only be possible after authentication') and ESTI-POLICY-027 ('security-relevant configuration changes... must only be accessible after authentication'). Maps authentication to a verifiable 'CheckAuthorization' API call.",
+      "reference": {
+        "source_id": "ESTI-POLICY-026"
+      }
+    },
+    {
+      "policy_description": "All non-immutable software components on the device should be securely updateable.",
+      "scope": "Software Update",
+      "definition": "All software components in consumer IoT devices that are not immutable due to security reasons should be securely updateable.",
+      "reference": {
+        "source_id": "ESTI-POLICY-006"
+      }
+    },
+    {
+      "policy_description": "Every sensitive event must be recorded in an audit log.",
+      "scope": "Auditing",
+      "definition": "Although ESTI lacks a direct audit rule, it's implied by policies like 038 ('If an unauthorized software change is detected...'). This makes the requirement explicit and verifiable via 'RecordAuditEvent'.",
+      "reference": {
+        "source_id": "ESTI-POLICY-038"
+      }
+    },
+    {
+      "policy_description": "Granting guest access must be preceded by an action that creates the guest.",
+      "scope": "Business Logic Sequence",
+      "definition": "Refined from ESTI-POLICY-035 ('least necessary privileges') and ESTI-POLICY-050 ('provide a means to acquire... consent'). Enforces a logical workflow: a guest must exist before permissions are granted to them.",
+      "reference": {
+        "source_id": "ESTI-POLICY-035 / ESTI-POLICY-050"
+      }
+    },
+    {
+      "policy_description": "When a guest is deleted, all associated access and codes must be revoked to ensure full data erasure.",
+      "scope": "Data Deletion",
+      "definition": "Refined from ESTI-POLICY-045 ('erase all their user data') and ESTI-POLICY-047 ('confirmation that... data has been deleted'). Ensures deletion is a clean and complete process.",
+      "reference": {
+        "source_id": "ESTI-POLICY-045 / ESTI-POLICY-047"
+      }
+    }
+  ]
+}

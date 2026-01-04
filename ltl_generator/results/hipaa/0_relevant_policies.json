@@ -1,0 +1,202 @@
+{
+  "relevant_policies": [
+    {
+      "relevancy_analysis": "Maps to the toolkit's authorization and access functions (CheckAuthorization, AccessUserInfo, AccessMedicalHistory). The API must restrict PHI access to authorized sessions, which is testable by calling authorization checks and attempting PHI-returning operations.",
+      "policy": {
+        "policy_description": "Implement technical policies and procedures for electronic information systems that maintain electronic protected health information to allow access only to those persons or software programs that have been granted access rights as specified in \u0000a7 164.308(a) (4) [Information Access Management].",
+        "scope": "Access controls should enable authorized users to access the minimum necessary information needed to perform job functions.",
+        "definition": "User identification is a way to identify a specific user of an information system, typically by name and/or number.",
+        "reference": {
+          "source_id": "HIPAA TECHSAFEGUARDS (Page 3-4)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "The toolkit records and assumes session identities (RecordAuditEvent, CheckAuthorization). Assigning unique identifiers for users is directly testable/observable via audit logs and behavior of APIs that assume user identity.",
+      "policy": {
+        "policy_description": "Assign a unique name and/or number for identifying and tracking user identity.",
+        "scope": "A unique user identifier allows an entity to track specific user activity when that user is logged into an information system. It enables an entity to hold users accountable for functions performed on information systems with EPHI when logged into those systems.",
+        "definition": "User identification is a way to identify a specific user of an information system, typically by name and/or number.",
+        "reference": {
+          "source_id": "HIPAA TECHSAFEGUARDS (Page 4)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Directly mapable to the toolkit's RecordAuditEvent tool. The API exposes audit logging; tests can verify that security-relevant events (e.g., PHI access) can be recorded and that RecordAuditEvent functions as expected.",
+      "policy": {
+        "policy_description": "Implement hardware, software, and/or procedural mechanisms that record and examine activity in information systems that contain or use electronic protected health information.",
+        "scope": "Most information systems provide some level of audit controls with a reporting method, such as audit reports. These controls are useful for recording and examining information system activity, especially when determining if a security violation occurred.",
+        "definition": "",
+        "reference": {
+          "source_id": "HIPAA TECHSAFEGUARDS (Page 7)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Relates to verifying user identity before allowing access to PHI. The toolkit provides CheckAuthorization and returns PHI via AccessUserInfo/AccessMedicalHistory, so authentication/authorization procedures are testable through those calls.",
+      "policy": {
+        "policy_description": "Implement procedures to verify that a person or entity seeking access to electronic protected health information is the one claimed.",
+        "scope": "In general, authentication ensures that a person is in fact who he or she claims to be before being allowed access to EPHI. This is accomplished by providing proof of identity.",
+        "definition": "Authentication involves confirming that users are who they claim to be.",
+        "reference": {
+          "source_id": "HIPAA TECHSAFEGUARDS (Page 9)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "The toolkit exposes endpoints that return or act on sensitive data only when authorized and records audit events. The resource-server requirement to validate access tokens and enforce authorization maps to how the toolkit should control calls to AccessUserInfo, AccessMedicalHistory, RequestPrescription, etc.; testers can exercise/validate enforcement via authorized vs. unauthorized session calls and CheckAuthorization.",
+      "policy": {
+        "policy_description": "To provide secure access, the resource server must: Validate the access token, according to the token format and relevant protocol specifications, e.g., JWT-validation or OAuth token introspection. If valid, enforce authorization decisions based on the information from the access token and permissions which have been granted.",
+        "scope": "resource server",
+        "definition": "",
+        "reference": {
+          "source_id": "source: HIPAA TECHSAFEGUARDS"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "The toolkit assumes session identity and uses actions that consume tokens/sessions; the ASVS note about access tokens clarifies how tokens should be used by resource servers and is relevant to testing authorization on PHI-returning endpoints.",
+      "policy": {
+        "policy_description": "Access tokens, which shall only be consumed by the RS and can either be reference tokens that are validated using introspection or self-contained tokens that are validated using some key material.",
+        "scope": "Access tokens",
+        "definition": "",
+        "reference": {
+          "source_id": "source: HIPAA TECHSAFEGUARDS"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "AccessUserInfo returns multiple sensitive fields. Field-level access constraints are directly applicable and testable by attempting to access different fields with different authorization contexts.",
+      "policy": {
+        "policy_description": "Where field access depends on a user\u0002s permissions, this should be considered in the context of the field-level access control requirement in the Authorization chapter.",
+        "scope": "Where field access depends on a user\u0002s permissions",
+        "definition": "",
+        "reference": {
+          "source_id": "source: HIPAA TECHSAFEGUARDS"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "RecordAuditEvent is provided; logs produced by the toolkit must avoid storing unnecessary sensitive personal data. This policy can be tested by inspecting audit-event contents and verifying compliance with minimizing PHI in logs.",
+      "policy": {
+        "policy_description": "Logs should not include sensitive personal data unless legally required, and any logged data must be protected as a high-value asset.",
+        "scope": "Logs",
+        "definition": "",
+        "reference": {
+          "source_id": "source: HIPAA TECHSAFEGUARDS"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "General constraint on logging behavior maps to RecordAuditEvent and any returned error or debug output from toolkit calls; tests can ensure logging does not leak PHI and that logging preserves privacy and security.",
+      "policy": {
+        "policy_description": "Logging must not compromise privacy or system security.",
+        "scope": "Logging",
+        "definition": "",
+        "reference": {
+          "source_id": "source: HIPAA TECHSAFEGUARDS"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Encourages minimal logging of sensitive data; directly applicable to audit events created via RecordAuditEvent and any logs emitted by API endpoints that return PHI. Testable by reviewing recorded event content and log retention.",
+      "policy": {
+        "policy_description": "Therefore, it is critical to log only what is necessary and to treat log data with the same care as other sensitive assets.",
+        "scope": "logging sensitive data",
+        "definition": "",
+        "reference": {
+          "source_id": "source: HIPAA TECHSAFEGUARDS"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Ensures access is granted only to authorized users/programs. Refined to specify runtime check sequence.",
+      "policy": {
+        "policy_description": "Every API call attempting to access e-PHI must be immediately preceded by a successful authorization check.",
+        "scope": "Access Control",
+        "definition": "Derived from HIPAA Security Rule \u0010 164.312(a)(1) Access Control. Ensures access is granted only to authorized users/programs. Refined to specify runtime check sequence.",
+        "reference": {
+          "source_id": "HIPAA-Sec-164.312(a)(1)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Ensures identity verification before access. Refined to specify session authentication sequence.",
+      "policy": {
+        "policy_description": "A user must successfully authenticate at the start of a session before any API call accessing e-PHI can be processed within that session.",
+        "scope": "Authentication",
+        "definition": "Derived from HIPAA Security Rule \u0010 164.312(d) Person or Entity Authentication. Ensures identity verification before access. Refined to specify session authentication sequence.",
+        "reference": {
+          "source_id": "HIPAA-Sec-164.312(d)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Mandates recording system activity involving e-PHI. Refined to specify logging sequence after access.",
+      "policy": {
+        "policy_description": "Every API call that successfully accesses e-PHI must be followed by an action that records the event in an audit log.",
+        "scope": "Auditing",
+        "definition": "Derived from HIPAA Security Rule \u0010 164.312(b) Audit Controls. Mandates recording system activity involving e-PHI. Refined to specify logging sequence after access.",
+        "reference": {
+          "source_id": "HIPAA-Sec-164.312(b)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Prevents users from accessing specific data objects they shouldn't.",
+      "policy": {
+        "policy_description": "Before returning data for a specific record (e.g., via AccessMedicalHistory), the system must verify that the authenticated user is authorized to access *that specific record*.",
+        "scope": "Object Level Authorization",
+        "definition": "Based on OWASP AVAS. Prevents users from accessing specific data objects they shouldn't.",
+        "reference": {
+          "source_id": "OWASP-AVAS"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Ensures users can only perform actions they are permitted to.",
+      "policy": {
+        "policy_description": "API endpoints performing sensitive actions (e.g., ScheduleAppointment, ManageAppointments(action='cancel')) must verify the user has the specific permissions required for *that action*.",
+        "scope": "Function Level Authorization",
+        "definition": "Based on OWASP AVAS. Ensures users can only perform actions they are permitted to.",
+        "reference": {
+          "source_id": "OWASP-AVAS"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "This is a standard medical workflow rule to ensure prescriptions are based on a recent consultation.",
+      "policy": {
+        "policy_description": "A prescription can only be requested after a medical consultation with a doctor has occurred.",
+        "scope": "Clinical Workflow / Prescription Logic",
+        "definition": "This is a standard medical workflow rule to ensure prescriptions are based on a recent consultation.",
+        "reference": {
+          "source_id": "ClinicalWorkflow-001"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "This is a standard business logic rule to ensure reviews are from patients who have actually had a consultation.",
+      "policy": {
+        "policy_description": "A user can only leave a review for a doctor after a consultation with that doctor is complete.",
+        "scope": "Clinical Workflow / Review Logic",
+        "definition": "This is a standard business logic rule to ensure reviews are from patients who have actually had a consultation.",
+        "reference": {
+          "source_id": "BusinessLogic-002"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "This is a business logic rule to prevent unsolicited messages and tie communication to an established patient-doctor relationship.",
+      "policy": {
+        "policy_description": "Secure messaging with a doctor is only enabled after a consultation or appointment has been established.",
+        "scope": "Clinical Workflow / Communication Logic",
+        "definition": "This is a business logic rule to prevent unsolicited messages and tie communication to an established patient-doctor relationship.",
+        "reference": {
+          "source_id": "BusinessLogic-003"
+        }
+      }
+    }
+  ]
+}

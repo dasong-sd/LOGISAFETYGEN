@@ -1,0 +1,155 @@
+{
+  "deduplication_analysis": [
+    {
+      "representative_policy": {
+        "policy_description": "not modify the amount, the payee or any other feature of the transaction.",
+        "scope": "The payment initiation service provider",
+        "definition": "'payment initiation service provider' means a payment service provider pursuing business activities as referred to in point (7) of Annex 1;",
+        "reference": {
+          "source_id": "PSD2-Art66(3)(h)"
+        }
+      },
+      "justification": "Represents the constraint that a payment initiation service provider must not alter core transaction details (amount, payee, or other transaction features). This is a distinct rule about transaction integrity tied to PSD2 Art66(3)(h). No other policy in the set enforces exactly this constraint, so it remains a standalone representative.",
+      "merged_policies": []
+    },
+    {
+      "representative_policy": {
+        "policy_description": "Member States shall ensure that a payment service provider applies strong customer authentication where the payer: (b) initiates an electronic payment transaction;",
+        "scope": "Member States",
+        "definition": "'payment service provider' means a body referred to in PSD2-Art1(1) or a natural or legal person benefiting from an exemption pursuant to PSD2-Art32 or 33; 'strong customer authentication' means an authentication based on the use of two or more elements categorised as knowledge, possession and inherence...",
+        "reference": {
+          "source_id": "PSD2-Art97(1)(b)"
+        }
+      },
+      "justification": "Two entries in the input are semantically identical and both enforce the same core technical constraint: applying Strong Customer Authentication (SCA) when initiating an electronic payment transaction. The first occurrence was chosen as the representative for clarity; the second identical entry is merged into it so the consolidated representative lists the aggregated source(s).",
+      "merged_policies": [
+        {
+          "policy_description": "Member States shall ensure that a payment service provider applies strong customer authentication where the payer: (b) initiates an electronic payment transaction;",
+          "scope": "Strong Customer Authentication",
+          "definition": "PSD2 Article 97(1)(b)",
+          "reference": {
+            "source_id": "PSD2-Art97(1)(b)"
+          }
+        }
+      ]
+    },
+    {
+      "representative_policy": {
+        "policy_description": "A payment transaction must be considered authorised only if the payer (user) has given explicit consent.",
+        "scope": "Payment Authorization",
+        "definition": "Derived from PSD2 Art. 64(1). Requires user consent before executing transactions.",
+        "reference": {
+          "source_id": "PSD2-Art64-Consent"
+        }
+      },
+      "justification": "This policy enforces the specific constraint that explicit payer consent is required to consider a payment authorised (PSD2 Art.64(1)). No other policy duplicates this exact consent requirement, so it stands alone as the representative for that constraint.",
+      "merged_policies": []
+    },
+    {
+      "representative_policy": {
+        "policy_description": "API endpoints performing sensitive actions must verify the user is authorized for that action.",
+        "scope": "Function Level Authorization",
+        "definition": "Derived from OWASP ASVS V4.1.1 & PSD2 SCA principles. Ensures users only perform allowed actions.",
+        "reference": {
+          "source_id": "OWASP ASVS V4.1.1/PSD2-SCA"
+        }
+      },
+      "justification": "Represents the function-level authorization constraint: endpoints that perform sensitive actions must check the caller is permitted to perform the specific action. This is distinct from object-level checks and is not duplicated elsewhere in the input.",
+      "merged_policies": []
+    },
+    {
+      "representative_policy": {
+        "policy_description": "Before returning account data, the system must verify the user is authorized for that specific account.",
+        "scope": "Object Level Authorization",
+        "definition": "Derived from OWASP ASVS V4.1.2 & PSD2 principles. Ensures users only access data they own or are permitted to see.",
+        "reference": {
+          "source_id": "OWASP ASVS V4.1.2/PSD2"
+        }
+      },
+      "justification": "Represents the object-level authorization constraint: verify access to a specific account/object before returning data. Although related to function-level authorization, this enforces a different, more granular constraint (per-object access) and is therefore kept separate.",
+      "merged_policies": []
+    },
+    {
+      "representative_policy": {
+        "policy_description": "Member States shall ensure that a payment service provider applies strong customer authentication where the payer: (a) accesses its payment account online.",
+        "scope": "Strong Customer Authentication",
+        "definition": "PSD2 Article 97(1)(a)",
+        "reference": {
+          "source_id": "PSD2-Art97(1)(a)"
+        }
+      },
+      "justification": "Enforces SCA specifically for online access to a payment account (PSD2 Art97(1)(a)). Although conceptually similar to the SCA rule for initiating payments, the trigger event (account access vs payment initiation) is different and thus treated as a separate technical constraint.",
+      "merged_policies": []
+    },
+    {
+      "representative_policy": {
+        "policy_description": "All security-relevant events, including data access and transaction initiation, must be recorded in a secure audit log.",
+        "scope": "Operational and Security Risks",
+        "definition": "Derived from PSD2 Art 95 and standard security best practices (e.g., OWASP ASVS V10).",
+        "reference": {
+          "source_id": "PSD2-Audit-Requirement"
+        }
+      },
+      "justification": "Represents the audit/logging constraint requiring secure recording of security-relevant events. No other policy in the input duplicates this logging requirement, so it remains the single representative for that constraint.",
+      "merged_policies": []
+    }
+  ],
+  "final_policies": [
+    {
+      "policy_description": "not modify the amount, the payee or any other feature of the transaction.",
+      "scope": "The payment initiation service provider",
+      "definition": "'payment initiation service provider' means a payment service provider pursuing business activities as referred to in point (7) of Annex 1;",
+      "reference": {
+        "source_id": "PSD2-Art66(3)(h)"
+      }
+    },
+    {
+      "policy_description": "Member States shall ensure that a payment service provider applies strong customer authentication where the payer: (b) initiates an electronic payment transaction;",
+      "scope": "Member States",
+      "definition": "'payment service provider' means a body referred to in PSD2-Art1(1) or a natural or legal person benefiting from an exemption pursuant to PSD2-Art32 or 33; 'strong customer authentication' means an authentication based on the use of two or more elements categorised as knowledge, possession and inherence...",
+      "reference": {
+        "source_id": "PSD2-Art97(1)(b)"
+      }
+    },
+    {
+      "policy_description": "A payment transaction must be considered authorised only if the payer (user) has given explicit consent.",
+      "scope": "Payment Authorization",
+      "definition": "Derived from PSD2 Art. 64(1). Requires user consent before executing transactions.",
+      "reference": {
+        "source_id": "PSD2-Art64-Consent"
+      }
+    },
+    {
+      "policy_description": "API endpoints performing sensitive actions must verify the user is authorized for that action.",
+      "scope": "Function Level Authorization",
+      "definition": "Derived from OWASP ASVS V4.1.1 & PSD2 SCA principles. Ensures users only perform allowed actions.",
+      "reference": {
+        "source_id": "OWASP ASVS V4.1.1/PSD2-SCA"
+      }
+    },
+    {
+      "policy_description": "Before returning account data, the system must verify the user is authorized for that specific account.",
+      "scope": "Object Level Authorization",
+      "definition": "Derived from OWASP ASVS V4.1.2 & PSD2 principles. Ensures users only access data they own or are permitted to see.",
+      "reference": {
+        "source_id": "OWASP ASVS V4.1.2/PSD2"
+      }
+    },
+    {
+      "policy_description": "Member States shall ensure that a payment service provider applies strong customer authentication where the payer: (a) accesses its payment account online.",
+      "scope": "Strong Customer Authentication",
+      "definition": "PSD2 Article 97(1)(a)",
+      "reference": {
+        "source_id": "PSD2-Art97(1)(a)"
+      }
+    },
+    {
+      "policy_description": "All security-relevant events, including data access and transaction initiation, must be recorded in a secure audit log.",
+      "scope": "Operational and Security Risks",
+      "definition": "Derived from PSD2 Art 95 and standard security best practices (e.g., OWASP ASVS V10).",
+      "reference": {
+        "source_id": "PSD2-Audit-Requirement"
+      }
+    }
+  ]
+}

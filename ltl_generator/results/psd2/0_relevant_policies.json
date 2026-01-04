@@ -1,0 +1,191 @@
+{
+  "relevant_policies": [
+    {
+      "relevancy_analysis": "The toolkit exposes a RecordAuditEvent call and returns log metadata; OWASP guidance that logs must not include sensitive personal data directly constrains how RecordAuditEvent should be used and what may be recorded.",
+      "policy": {
+        "policy_description": "Logs should not include sensitive personal data unless legally required, and any logged data must be protected as a high-value asset.",
+        "scope": "Logs",
+        "definition": "",
+        "reference": {
+          "source_id": "source: PSD2-Art66(3)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "RecordAuditEvent and any logging produced by toolkit operations must preserve user privacy and not leak sensitive info; this ASVS item maps to acceptable usage of the RecordAuditEvent tool and to how returned log_entry_id and log content are handled.",
+      "policy": {
+        "policy_description": "Logging must not compromise privacy or system security.",
+        "scope": "Logging",
+        "definition": "",
+        "reference": {
+          "source_id": "source: PSD2-Art66(3)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Specifies logging minimization and protection practices that are directly testable with the toolkit's audit logging (RecordAuditEvent) \u2014 e.g., ensuring only necessary fields are logged and sensitive fields are excluded.",
+      "policy": {
+        "policy_description": "Therefore, it is critical to log only what is necessary and to treat log data with the same care as other sensitive assets.",
+        "scope": "logging sensitive data",
+        "definition": "",
+        "reference": {
+          "source_id": "source: PSD2-Art66(3)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "The toolkit provides payment initiation operations (TransferFunds, PayBill); PSD2 requires payment initiation service providers not to store sensitive payment data \u2014 this is directly applicable to how the toolkit (and any components using it) handle credentials and related secrets.",
+      "policy": {
+        "policy_description": "not store sensitive payment data of the payment service user;",
+        "scope": "The payment initiation service provider",
+        "definition": "'payment initiation service provider' means a payment service provider pursuing business activities as referred to in point (7) of Annex 1; 'sensitive payment data' means data, including personalised security credentials which can be used to carry out fraud.",
+        "reference": {
+          "source_id": "PSD2-Art66(3)(e)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "TransferFunds and PayBill define specific minimal parameters; this PSD2 rule (only request necessary data) maps to verifying the API accepts and requires only the necessary parameters and does not request extra sensitive fields.",
+      "policy": {
+        "policy_description": "not request from the payment service user any data other than those necessary to provide the payment initiation service;",
+        "scope": "The payment initiation service provider",
+        "definition": "'payment initiation service provider' means a payment service provider pursuing business activities as referred to in point (7) of Annex 1;",
+        "reference": {
+          "source_id": "PSD2-Art66(3)(f)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Related to API behaviour: toolkit endpoints must not reuse or retain user data for other purposes. This is testable by reviewing which fields TransferFunds/PayBill/SearchTransactions/GetAccountInformation accept and whether responses or logs expose unexpected uses of those fields.",
+      "policy": {
+        "policy_description": "not use, access or store any data for purposes other than for the provision of the payment initiation service as explicitly requested by the payer;",
+        "scope": "The payment initiation service provider",
+        "definition": "'payment initiation service provider' means a payment service provider pursuing business activities as referred to in point (7) of Annex 1;",
+        "reference": {
+          "source_id": "PSD2-Art66(3)(g)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "TransferFunds and PayBill must execute exactly the provided amount and payee. This PSD2 constraint can be validated against the toolkit by confirming that the API does not alter amount or destination when creating a payment.",
+      "policy": {
+        "policy_description": "not modify the amount, the payee or any other feature of the transaction.",
+        "scope": "The payment initiation service provider",
+        "definition": "'payment initiation service provider' means a payment service provider pursuing business activities as referred to in point (7) of Annex 1;",
+        "reference": {
+          "source_id": "PSD2-Art66(3)(h)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "The toolkit supports initiating electronic payments (TransferFunds, PayBill). PSD2's requirement to apply strong customer authentication when initiating electronic payment transactions maps to verifying CheckAuthorization and/or equivalent controls are enforced before these calls.",
+      "policy": {
+        "policy_description": "Member States shall ensure that a payment service provider applies strong customer authentication where the payer: (b) initiates an electronic payment transaction;",
+        "scope": "Member States",
+        "definition": "'payment service provider' means a body referred to in PSD2-Art1(1) or a natural or legal person benefiting from an exemption pursuant to PSD2-Art32 or 33; 'strong customer authentication' means an authentication based on the use of two or more elements categorised as knowledge, possession and inherence...",
+        "reference": {
+          "source_id": "PSD2-Art97(1)(b)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "For remote electronic payments the SCA requirement must dynamically link the authentication to the specific amount and payee. This is testable using TransferFunds/PayBill parameters (amount, to_account_number/payee_id) and by verifying the authentication step used by CheckAuthorization is bound to those details.",
+      "policy": {
+        "policy_description": "Member States shall ensure that, for electronic remote payment transactions, payment service providers apply strong customer authentication that includes elements which dynamically link the transaction to a specific amount and a specific payee.",
+        "scope": "With regard to the initiation of electronic payment transactions as referred to in point (b) of paragraph 1",
+        "definition": "'payment service providers' means a body referred to in PSD2-Art1(1) or a natural or legal person benefiting from an exemption pursuant to PSD2-Art32 or 33; 'strong customer authentication' means an authentication based on the use of two or more elements...",
+        "reference": {
+          "source_id": "PSD2-Art97(2)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "The toolkit returns account numbers in GetAccountInformation and account statements; PSD2 clarifies that account number and account owner name are not 'sensitive payment data' for PIS/AIS activities \u2014 relevant to what may be included in GetAccountInformation responses and what can be surfaced or logged.",
+      "policy": {
+        "policy_description": "For the activities of payment initiation service providers and account information service providers, the name of the account owner and the account number do not constitute sensitive payment data;",
+        "scope": "For the activities of payment initiation service providers and account information service providers",
+        "definition": "'payment initiation service providers' means a payment service provider pursuing business activities as referred to in point (7) of Annex 1; 'account information service providers' means a payment service provider pursuing business activities as referred to in point (8) of Annex I; 'sensitive payment data' means data, including personalised security credentials which can be used to carry out fraud.",
+        "reference": {
+          "source_id": "PSD2-Art4(32)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "ASVS explicitly requires MFA for higher assurance levels; this aligns with PSD2 SCA and is relevant to how CheckAuthorization and the surrounding authentication infrastructure should be implemented for actions like TransferFunds/PayBill.",
+      "policy": {
+        "policy_description": "L2 applications must force the use of multi-factor authentication (MFA).",
+        "scope": "L2 applications",
+        "definition": "",
+        "reference": {
+          "source_id": "source: PSD2-Art66(3)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Derived from PSD2 Art. 64(1). Requires user consent before executing transactions.",
+      "policy": {
+        "policy_description": "A payment transaction must be considered authorised only if the payer (user) has given explicit consent.",
+        "scope": "Payment Authorization",
+        "definition": "Derived from PSD2 Art. 64(1). Requires user consent before executing transactions.",
+        "reference": {
+          "source_id": "PSD2-Art64-Consent"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Derived from PSD2 V4.1.1 & PSD2 SCA principles. Ensures users only perform allowed actions.",
+      "policy": {
+        "policy_description": "API endpoints performing sensitive actions must verify the user is authorized for that action.",
+        "scope": "Function Level Authorization",
+        "definition": "Derived from PSD2 V4.1.1 & PSD2 SCA principles. Ensures users only perform allowed actions.",
+        "reference": {
+          "source_id": "PSD2 V4.1.1/PSD2-SCA"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Derived from PSD2 V4.1.2 & PSD2 principles. Ensures users only access data they own or are permitted to see.",
+      "policy": {
+        "policy_description": "Before returning account data, the system must verify the user is authorized for that specific account.",
+        "scope": "Object Level Authorization",
+        "definition": "Derived from PSD2 V4.1.2 & PSD2 principles. Ensures users only access data they own or are permitted to see.",
+        "reference": {
+          "source_id": "PSD2 V4.1.2/PSD2"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Directly relevant. The API has 'TransferFunds' and 'PayBill', which are electronic payment transactions requiring SCA.",
+      "policy": {
+        "policy_description": "Member States shall ensure that a payment service provider applies strong customer authentication where the payer: (b) initiates an electronic payment transaction.",
+        "scope": "Strong Customer Authentication",
+        "definition": "PSD2 Article 97(1)(b)",
+        "reference": {
+          "source_id": "PSD2-Art97(1)(b)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Directly relevant. The API has 'GetAccountInformation' and 'GetAccountStatement', which are online access to payment accounts requiring SCA.",
+      "policy": {
+        "policy_description": "Member States shall ensure that a payment service provider applies strong customer authentication where the payer: (a) accesses its payment account online.",
+        "scope": "Strong Customer Authentication",
+        "definition": "PSD2 Article 97(1)(a)",
+        "reference": {
+          "source_id": "PSD2-Art97(1)(a)"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Relevant. The API has a 'RecordAuditEvent' tool. This policy provides the requirement to use it for all sensitive actions.",
+      "policy": {
+        "policy_description": "All security-relevant events, including data access and transaction initiation, must be recorded in a secure audit log.",
+        "scope": "Operational and Security Risks",
+        "definition": "Derived from PSD2 Art 95 and standard security best practices (e.g., PSD2 V10).",
+        "reference": {
+          "source_id": "PSD2-Audit-Requirement"
+        }
+      }
+    }
+  ]
+}

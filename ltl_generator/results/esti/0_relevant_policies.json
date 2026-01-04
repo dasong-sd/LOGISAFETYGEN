@@ -1,0 +1,136 @@
+{
+  "relevant_policies": [
+    {
+      "relevancy_analysis": "The toolkit exposes CheckAuthorization which is intended to gate sensitive actions. This policy maps directly to that behavior: callers should verify authorization before performing actions like LockDoor, UnlockDoor, AddGuest, GrantGuestAccess, RevokeGuestAccess, GenerateTemporaryAccessCode, RevokeTemporaryAccessCode and other network-accessible operations.",
+      "policy": {
+        "policy_description": "Access to consumer IoT device functionality via a network interface in the initialized state should only be possible after authentication on that interface.",
+        "scope": "in the initialized state",
+        "definition": "",
+        "reference": {
+          "source_id": "ESTI-POLICY-045"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "All software components in consumer IoT devices that are not immutable due to security reasons should be securely updateable.",
+      "policy": {
+        "policy_description": "All non-immutable software components on the device should be securely updateable.",
+        "scope": "Software Update",
+        "definition": "All software components in consumer IoT devices that are not immutable due to security reasons should be securely updateable.",
+        "reference": {
+          "source_id": "ESTI-POLICY-006"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "The API includes many configuration-changing and security-relevant operations (AddGuest, DeleteGuest, GrantGuestAccess, RevokeGuestAccess, LockDoor, UnlockDoor). This policy requiring authentication before security-relevant configuration changes maps to using CheckAuthorization before those calls.",
+      "policy": {
+        "policy_description": "Consumer IoT device functionality that allows security-relevant changes in configuration via a network interface shall only be accessible after authentication.",
+        "scope": "None",
+        "definition": "",
+        "reference": {
+          "source_id": "ESTI-POLICY-026"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "The toolkit provides DeleteGuest (and guest management). This policy about erasing user data maps to DeleteGuest (and related guest-revocation APIs) as the mechanism exposed to remove guest/user records from the system.",
+      "policy": {
+        "policy_description": "Users shall be provided with functionality such that all their user data can be erased from the consumer IoT device in a simple manner.",
+        "scope": "None",
+        "definition": "",
+        "reference": {
+          "source_id": "ESTI-POLICY-028"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "The toolkit exposes RecordAuditEvent which accepts event_type and event_details. Policies about log contents and protection directly apply because RecordAuditEvent is the API surface that creates audit records and may receive personal data in event_details.",
+      "policy": {
+        "policy_description": "Logs should not include sensitive personal data unless legally required, and any logged data must be protected as a high-value asset.",
+        "scope": "Logs",
+        "definition": "",
+        "reference": {
+          "source_id": "source: ESTI-POLICY-953"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "RecordAuditEvent is how the toolkit records security events; ensuring that logging does not compromise privacy or security is directly testable by inspecting what is sent to RecordAuditEvent and how the system treats log data.",
+      "policy": {
+        "policy_description": "Logging must not compromise privacy or system security.",
+        "scope": "Logging",
+        "definition": "",
+        "reference": {
+          "source_id": "source: ESTI-POLICY-954"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Because RecordAuditEvent accepts arbitrary event_details, the guideline to log only necessary information maps to controlling what is passed to RecordAuditEvent and verifying that sensitive fields (e.g., full personal identifiers) are not logged unnecessarily.",
+      "policy": {
+        "policy_description": "Therefore, it is critical to log only what is necessary and to treat log data with the same care as other sensitive assets.",
+        "scope": "logging sensitive data",
+        "definition": "",
+        "reference": {
+          "source_id": "source: ESTI-POLICY-964"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "GrantGuestAccess documentation states an access code will be sent to the guest's email. This policy about disallowing unsafe out-of-band authentication (email/VOIP) directly applies to that behavior and is testable by verifying that the toolkit uses email for delivering access codes.",
+      "policy": {
+        "policy_description": "Unsafe out-of-band authentication mechanisms such as e-mail and VOIP are not permitted.",
+        "scope": "Unsafe out-of-band authentication mechanisms such as e-mail and VOIP",
+        "definition": "",
+        "reference": {
+          "source_id": "source: ESTI-POLICY-551"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Refined from ESTI-POLICY-026 ('Access... should only be possible after authentication') and ESTI-POLICY-027 ('security-relevant configuration changes... must only be accessible after authentication'). Maps authentication to a verifiable 'CheckAuthorization' API call.",
+      "policy": {
+        "policy_description": "Access to sensitive device functionality must only be possible after a successful authorization check.",
+        "scope": "Access Control",
+        "definition": "Refined from ESTI-POLICY-026 ('Access... should only be possible after authentication') and ESTI-POLICY-027 ('security-relevant configuration changes... must only be accessible after authentication'). Maps authentication to a verifiable 'CheckAuthorization' API call.",
+        "reference": {
+          "source_id": "ESTI-POLICY-026 / ESTI-POLICY-027"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Refined from ESTI-POLICY-026 ('Access... should only be possible after authentication') and ESTI-POLICY-027 ('security-relevant configuration changes... must only be accessible after authentication'). Maps authentication to a verifiable 'CheckAuthorization' API call.",
+      "policy": {
+        "policy_description": "Every sensitive event must be recorded in an audit log.",
+        "scope": "Auditing",
+        "definition": " Although ESTI lacks a direct audit rule, it's implied by policies like 038 ('If an unauthorized software change is detected...'). This makes the requirement explicit and verifiable via 'RecordAuditEvent'.",
+        "reference": {
+          "source_id": "ESTI-POLICY-038"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Enforces a logical workflow: a guest must exist before permissions are granted to them.",
+      "policy": {
+        "policy_description": "Granting guest access must be preceded by an action that creates the guest.",
+        "scope": "Business Logic Sequence",
+        "definition": "Refined from ESTI-POLICY-035 ('least necessary privileges') and ESTI-POLICY-050 ('provide a means to acquire... consent'). Enforces a logical workflow: a guest must exist before permissions are granted to them.",
+        "reference": {
+          "source_id": "ESTI-POLICY-035 / ESTI-POLICY-050"
+        }
+      }
+    },
+    {
+      "relevancy_analysis": "Ensures deletion is a clean and complete process.",
+      "policy": {
+        "policy_description": "When a guest is deleted, all associated access and codes must be revoked to ensure full data erasure.",
+        "scope": "Data Deletion",
+        "definition": "Refined from ESTI-POLICY-045 ('erase all their user data') and ESTI-POLICY-047 ('confirmation that... data has been deleted'). Ensures deletion is a clean and complete process.",
+        "reference": {
+          "source_id": "ESTI-POLICY-045 / ESTI-POLICY-047"
+        }
+      }
+    }
+  ]
+}

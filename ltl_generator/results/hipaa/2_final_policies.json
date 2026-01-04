@@ -1,0 +1,91 @@
+{
+  "deduplication_analysis": [
+    {
+      "representative_policy": {
+        "policy_description": "To provide secure access, the resource server must: Validate the access token, according to the token format and relevant protocol specifications, e.g., JWT-validation or OAuth token introspection. If valid, enforce authorization decisions based on the information from the access token and permissions which have been granted.",
+        "scope": "resource server",
+        "definition": "",
+        "reference": {
+          "source_id": "source: OWASP ASVS 725 (aggregated): [\"source: OWASP ASVS 725\", \"HIPAA-Sec-164.312(a)(1)\", \"OWASP-AVAS\"]"
+        }
+      },
+      "justification": "This policy is the clearest, most comprehensive expression of the technical constraint that authorization checks (and validation of the presented token) must be performed by the resource server before granting access to protected data. The other policies in this group express the same core rule in narrower terms (authorization before API access, object-level authorization, function-level authorization). Selecting the resource-server token-validation + enforcement statement as the representative preserves the required token validation step and the enforcement requirement while capturing the same core constraint.",
+      "merged_policies": [
+        {
+          "policy_description": "Every API call attempting to access e-PHI must be immediately preceded by a successful authorization check.",
+          "scope": "Access Control",
+          "definition": "Derived from HIPAA Security Rule \u0010 164.312(a)(1) Access Control. Ensures access is granted only to authorized users/programs. Refined to specify runtime check sequence.",
+          "reference": {
+            "source_id": "HIPAA-Sec-164.312(a)(1)"
+          }
+        },
+        {
+          "policy_description": "Before returning data for a specific record (e.g., via AccessMedicalHistory), the system must verify that the authenticated user is authorized to access *that specific record*.",
+          "scope": "Object Level Authorization",
+          "definition": "Based on OWASP AVAS. Prevents users from accessing specific data objects they shouldn't.",
+          "reference": {
+            "source_id": "OWASP-AVAS"
+          }
+        },
+        {
+          "policy_description": "API endpoints performing sensitive actions (e.g., ScheduleAppointment, ManageAppointments(action='cancel')) must verify the user has the specific permissions required for *that action*.",
+          "scope": "Function Level Authorization",
+          "definition": "Based on OWASP AVAS. Ensures users can only perform actions they are permitted to.",
+          "reference": {
+            "source_id": "OWASP-AVAS"
+          }
+        }
+      ]
+    },
+    {
+      "representative_policy": {
+        "policy_description": "A user must successfully authenticate at the start of a session before any API call accessing e-PHI can be processed within that session.",
+        "scope": "Authentication",
+        "definition": "Derived from HIPAA Security Rule \u0010 164.312(d) Person or Entity Authentication. Ensures identity verification before access. Refined to specify session authentication sequence.",
+        "reference": {
+          "source_id": "HIPAA-Sec-164.312(d)"
+        }
+      },
+      "justification": "This policy enforces authentication as a prerequisite to session-based access to e-PHI. It addresses identity verification (authentication) rather than authorization or token validation/enforcement, and therefore is a distinct technical constraint that should remain separate.",
+      "merged_policies": []
+    },
+    {
+      "representative_policy": {
+        "policy_description": "Every API call that successfully accesses e-PHI must be followed by an action that records the event in an audit log.",
+        "scope": "Auditing",
+        "definition": "Derived from HIPAA Security Rule \u0010 164.312(b) Audit Controls. Mandates recording system activity involving e-PHI. Refined to specify logging sequence after access.",
+        "reference": {
+          "source_id": "HIPAA-Sec-164.312(b)"
+        }
+      },
+      "justification": "This policy enforces audit/logging of successful accesses to e-PHI (audit control). It is a distinct technical requirement (auditing) and does not duplicate authentication or authorization constraints, so it stands alone.",
+      "merged_policies": []
+    }
+  ],
+  "final_policies": [
+    {
+      "policy_description": "To provide secure access, the resource server must: Validate the access token, according to the token format and relevant protocol specifications, e.g., JWT-validation or OAuth token introspection. If valid, enforce authorization decisions based on the information from the access token and permissions which have been granted.",
+      "scope": "resource server",
+      "definition": "",
+      "reference": {
+        "source_id": "source: OWASP ASVS 725 (aggregated): [\"source: OWASP ASVS 725\", \"HIPAA-Sec-164.312(a)(1)\", \"OWASP-AVAS\"]"
+      }
+    },
+    {
+      "policy_description": "A user must successfully authenticate at the start of a session before any API call accessing e-PHI can be processed within that session.",
+      "scope": "Authentication",
+      "definition": "Derived from HIPAA Security Rule \u0010 164.312(d) Person or Entity Authentication. Ensures identity verification before access. Refined to specify session authentication sequence.",
+      "reference": {
+        "source_id": "HIPAA-Sec-164.312(d)"
+      }
+    },
+    {
+      "policy_description": "Every API call that successfully accesses e-PHI must be followed by an action that records the event in an audit log.",
+      "scope": "Auditing",
+      "definition": "Derived from HIPAA Security Rule \u0010 164.312(b) Audit Controls. Mandates recording system activity involving e-PHI. Refined to specify logging sequence after access.",
+      "reference": {
+        "source_id": "HIPAA-Sec-164.312(b)"
+      }
+    }
+  ]
+}
