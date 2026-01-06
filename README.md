@@ -1,6 +1,6 @@
-# LogicSafetyGen
+# LogiSafetyGen
 
-**LogicSafetyGen** is a comprehensive benchmark and evaluation framework designed to assess the safety of autonomous agents using verifiable logic rules. It provides a complete pipeline for policy extraction, LTL rule generation, trace fuzzing, and safety evaluation across diverse scenarios (Bank Manager, Teladoc, Smart Lock).
+**LogiSafetyGen** is a comprehensive evaluation framework designed to assess the safety of autonomous large language models (LLMs) using verifiable logic rules. It provides a complete pipeline for policy extraction, LTL rule generation, trace fuzzing, and safety evaluation across diverse scenarios. By using LogiSafetyGen, we created LogiSafetyBench, a benchmark suite for evaluating the safety of LLMs in following complex regulations and policies.
 
 ## 🛠️ Installation & Setup
 
