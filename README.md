@@ -26,7 +26,7 @@ To run the standard evaluation on existing models and scenarios:
 ```bash
 python benchmark_eval.py
 ```
-**Tip:** You can customize specific models or scenarios directly inside test_eval.py.
+**Tip:** You can customize specific models or scenarios directly inside benchmark_eval.py.
 
 
 ## 📊 Reproducing Paper Results
@@ -96,5 +96,5 @@ python ltl_generator/ltl_checker.py
     ```
 2.  **Run Evaluation:** You can now run the standard benchmark on your new data.
     ```bash
-    python test_eval.py
+    python benchmark_eval.py
     ```
