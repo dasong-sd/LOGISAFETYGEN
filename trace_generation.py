@@ -104,7 +104,6 @@ def generate_ground_truth_traces(api_doc_name: str, filtered_rules_file: str, ou
         logger.error("Aborting trace generation due to missing LTL rules.")
         return
 
-    # Use your trace_state_recorder.py
     recorder = TraceStateRecorder(api_doc_name)
 
     # --- 4. Setup LTL-Guided Trace Generator ---

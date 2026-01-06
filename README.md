@@ -24,7 +24,7 @@ export TENSORBLOCK_API_KEY="your_tensorblock_key_here"
 ## 🚀 Running the Benchmark
 To run the standard evaluation on existing models and scenarios:
 ```bash
-python test_eval.py
+python benchmark_eval.py
 ```
 **Tip:** You can customize specific models or scenarios directly inside test_eval.py.
 

@@ -6,8 +6,6 @@ from collections import defaultdict
 from typing import List, Dict, Any, Set, Optional
 
 import sys
-# Add the parent directory (project root) to the Python path
-# Adjust this path if your directory structure is different
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 try:
     from ltl_parser.parser import parse_ltl
