@@ -6,7 +6,7 @@
         "scope": "resource server",
         "definition": "",
         "reference": {
-          "source_id": "source: OWASP ASVS 725 (aggregated): [\"source: OWASP ASVS 725\", \"HIPAA-Sec-164.312(a)(1)\", \"OWASP-AVAS\"]"
+          "source_id": "source: [\"HIPAA-Sec-164.312(a)(1)\", \"HIPAA-Sec\"]"
         }
       },
       "justification": "This policy is the clearest, most comprehensive expression of the technical constraint that authorization checks (and validation of the presented token) must be performed by the resource server before granting access to protected data. The other policies in this group express the same core rule in narrower terms (authorization before API access, object-level authorization, function-level authorization). Selecting the resource-server token-validation + enforcement statement as the representative preserves the required token validation step and the enforcement requirement while capturing the same core constraint.",
@@ -22,17 +22,17 @@
         {
           "policy_description": "Before returning data for a specific record (e.g., via AccessMedicalHistory), the system must verify that the authenticated user is authorized to access *that specific record*.",
           "scope": "Object Level Authorization",
-          "definition": "Based on OWASP AVAS. Prevents users from accessing specific data objects they shouldn't.",
+          "definition": "Based on HIPAA-Sec. Prevents users from accessing specific data objects they shouldn't.",
           "reference": {
-            "source_id": "OWASP-AVAS"
+            "source_id": "HIPAA-Sec"
           }
         },
         {
           "policy_description": "API endpoints performing sensitive actions (e.g., ScheduleAppointment, ManageAppointments(action='cancel')) must verify the user has the specific permissions required for *that action*.",
           "scope": "Function Level Authorization",
-          "definition": "Based on OWASP AVAS. Ensures users can only perform actions they are permitted to.",
+          "definition": "Based on HIPAA-Sec. Ensures users can only perform actions they are permitted to.",
           "reference": {
-            "source_id": "OWASP-AVAS"
+            "source_id": "HIPAA-Sec"
           }
         }
       ]
@@ -68,7 +68,7 @@
       "scope": "resource server",
       "definition": "",
       "reference": {
-        "source_id": "source: OWASP ASVS 725 (aggregated): [\"source: OWASP ASVS 725\", \"HIPAA-Sec-164.312(a)(1)\", \"OWASP-AVAS\"]"
+        "source_id": "source: OWASP ASVS 725 (aggregated): [\"source: OWASP ASVS 725\", \"HIPAA-Sec-164.312(a)(1)\", \"HIPAA-Sec\"]"
       }
     },
     {

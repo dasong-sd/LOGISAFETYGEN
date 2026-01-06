@@ -796,7 +796,7 @@
     "scope": "For any reuse or distribution",
     "policy_description": "For any reuse or distribution, you must clearly communicate the license terms of this work to others.",
     "reference": [
-      "source: PSD2 13"
+      "source: 13"
     ]
   },
   {
@@ -804,8 +804,8 @@
     "scope": "Components that serve, modify, or validate HTTP traffic, such as Web Application Firewalls (WAFs), load balancers, or proxies",
     "policy_description": "These components should be considered for requirements related to cached responses, rate limiting, or restricting incoming and outgoing connections based on source and destination.",
     "reference": [
-      "source: PSD2 63",
-      "source: PSD2 64"
+      "source: 63",
+      "source: 64"
     ]
   },
   {
@@ -813,23 +813,23 @@
     "scope": "All other considerations, such as functional aspects, code style, or policy requirements",
     "policy_description": "All other considerations, such as functional aspects, code style, or policy requirements, are out of scope.",
     "reference": [
-      "source: PSD2 71"
+      "source: 71"
     ]
   },
   {
     "definition": [],
-    "scope": "ASVS 5.0",
+    "scope": "5.0",
     "policy_description": "In other words, recommendations, whether they are just one of many possible options to solve a problem or code style considerations, do not satisfy the definition to be a requirement.",
     "reference": [
-      "source: PSD2 85"
+      "source: 85"
     ]
   },
   {
     "definition": [],
-    "scope": "Each ASVS level",
-    "policy_description": "Each ASVS level indicates the security requirements that are required to achieve from that level, with the higher remaining level requirements as recommendations.",
+    "scope": "Each level",
+    "policy_description": "Each level indicates the security requirements that are required to achieve from that level, with the higher remaining level requirements as recommendations.",
     "reference": [
-      "source: PSD2 115"
+      "source: 115"
     ]
   },
   {
@@ -837,7 +837,7 @@
     "scope": "Level 1",
     "policy_description": "This level contains the minimum requirements to consider when securing an application and represents a critical starting point.",
     "reference": [
-      "source: PSD2 126"
+      "source: 126"
     ]
   },
   {
@@ -845,7 +845,7 @@
     "scope": "Level 2",
     "policy_description": "Most applications should be striving to achieve this level of security.",
     "reference": [
-      "source: PSD2 133"
+      "source: 133"
     ]
   },
   {
@@ -853,15 +853,15 @@
     "scope": "Level 3",
     "policy_description": "This level should be the goal for applications looking to demonstrate the highest levels of security and provides the final ~30% of requirements to comply with.",
     "reference": [
-      "source: PSD2 138"
+      "source: 138"
     ]
   },
   {
     "definition": [],
     "scope": "Organizations",
-    "policy_description": "Rather than the ASVS prescriptively stating what level an application should be at, an organization should analyze its risks and decide what level it believes it should be at, depending on the sensitivity of the application and of course, the expectations of the application’s users.",
+    "policy_description": "Rather than the prescriptively stating what level an application should be at, an organization should analyze its risks and decide what level it believes it should be at, depending on the sensitivity of the application and of course, the expectations of the application’s users.",
     "reference": [
-      "source: PSD2 142"
+      "source: 142"
     ]
   },
   {
@@ -869,7 +869,7 @@
     "scope": "Organizations",
     "policy_description": "Additionally, organizations are strongly encouraged to create an organization- or domain-specific fork that adjusts requirements based on the specific characteristics and risk levels of their applications.",
     "reference": [
-      "source: PSD2 162"
+      "source: 162"
     ]
   },
   {
@@ -877,7 +877,7 @@
     "scope": "forks",
     "policy_description": "However, it is important to maintain traceability so that passing requirement 4.1.1 means the same across all versions.",
     "reference": [
-      "source: PSD2 163"
+      "source: 163"
     ]
   },
   {
@@ -885,15 +885,15 @@
     "scope": "Organizations",
     "policy_description": "Ideally, each organization should create its own tailored ASVS, omitting irrelevant sections (e.g., GraphQL, WebSockets, SOAP, if unused).",
     "reference": [
-      "source: PSD2 164"
+      "source: 164"
     ]
   },
   {
     "definition": [],
     "scope": "documents, reports, or tools",
-    "policy_description": "Since the identifiers may change between versions of the standard, it is preferable for other documents, reports, or tools to use the following format: v<version>-<chapter>.<section>.<requirement>, where: ‘version’ is the ASVS version tag.",
+    "policy_description": "Since the identifiers may change between versions of the standard, it is preferable for other documents, reports, or tools to use the following format: v<version>-<chapter>.<section>.<requirement>, where: ‘version’ is the version tag.",
     "reference": [
-      "source: PSD2 173"
+      "source: 173"
     ]
   },
   {
@@ -901,7 +901,7 @@
     "scope": "format: v<version>-<chapter>.<section>.<requirement>",
     "policy_description": "Note: The v preceding the version number in the format should always be lowercase.",
     "reference": [
-      "source: PSD2 176"
+      "source: 176"
     ]
   },
   {
@@ -909,7 +909,7 @@
     "scope": "Identifiers without v<version> element",
     "policy_description": "If identifiers are used without including the v<version> element then they should be assumed to refer to the latest Application Security Verification Standard content.",
     "reference": [
-      "source: PSD2 177"
+      "source: 177"
     ]
   },
   {
@@ -917,23 +917,23 @@
     "scope": "writers or developers",
     "policy_description": "As the standard grows and changes this becomes problematic, which is why writers or developers should include the version element.",
     "reference": [
-      "source: PSD2 178"
+      "source: 178"
     ]
   },
   {
     "definition": [],
     "scope": "Forking",
-    "policy_description": "Forking should start with ASVS Level 1 as a baseline, advancing to Levels 2 or 3 based on the application’s risk.",
+    "policy_description": "Forking should start with Level 1 as a baseline, advancing to Levels 2 or 3 based on the application’s risk.",
     "reference": [
-      "source: PSD2 184"
+      "source: 184"
     ]
   },
   {
     "definition": [],
     "scope": "prganizations",
-    "policy_description": "Whilst the ASVS can be the base, prganizations should prepare their own specific guidance which is clear and unified and ideally be prepared based on guidance from security engineers or security architects.",
+    "policy_description": "Whilst the can be the base, prganizations should prepare their own specific guidance which is clear and unified and ideally be prepared based on guidance from security engineers or security architects.",
     "reference": [
-      "source: PSD2 195"
+      "source: 195"
     ]
   },
   {
@@ -941,23 +941,23 @@
     "scope": "organizations",
     "policy_description": "As an extension to this, organizations are encouraged wherever possible to prepare approved security mechanisms and libraries that can be referenced in the guidance and used by developers.",
     "reference": [
-      "source: PSD2 196"
+      "source: 196"
     ]
   },
   {
     "definition": [],
     "scope": "Organizations",
-    "policy_description": "Organizations are strongly encouraged to look deeply at their unique risk characteristics based on the nature of their business, and based upon that risk and business requirements determine the appropriate ASVS level.",
+    "policy_description": "Organizations are strongly encouraged to look deeply at their unique risk characteristics based on the nature of their business, and based upon that risk and business requirements determine the appropriate level.",
     "reference": [
-      "source: PSD2 213"
+      "source: 213"
     ]
   },
   {
     "definition": [],
     "scope": "organizations",
-    "policy_description": "Any assurance, trust mark, or certification claiming ASVS compliance is not officially endorsed by OWASP, so organizations should be cautious of third-party claims of ASVS certification.",
+    "policy_description": "Any assurance, trust mark, or certification claiming compliance is not officially endorsed by OWASP, so organizations should be cautious of third-party claims of certification.",
     "reference": [
-      "source: PSD2 217"
+      "source: 217"
     ]
   },
   {
@@ -965,23 +965,23 @@
     "scope": "Organizations",
     "policy_description": "Organizations may offer assurance services, provided they do not claim official OWASP certification.",
     "reference": [
-      "source: PSD2 218"
+      "source: 218"
     ]
   },
   {
     "definition": [],
-    "scope": "ASVS certification report",
-    "policy_description": "However, an ASVS certification report should include scope, a summary of all requirements checked, the requirements where execptions were noted, and guidance on resolving issues.",
+    "scope": "certification report",
+    "policy_description": "However, an certification report should include scope, a summary of all requirements checked, the requirements where execptions were noted, and guidance on resolving issues.",
     "reference": [
-      "source: PSD2 224"
+      "source: 224"
     ]
   },
   {
     "definition": [],
-    "scope": "ASVS certification report",
+    "scope": "certification report",
     "policy_description": "Some requirements may be non-applicable (e.g., session management in stateless APIs), and this must be noted in the report.",
     "reference": [
-      "source: PSD2 225"
+      "source: 225"
     ]
   },
   {
@@ -989,7 +989,7 @@
     "scope": "The verifier",
     "policy_description": "The verifier should make the scope of the verification clear including which Level the organization is attempting to achieve and which requirements were included.",
     "reference": [
-      "source: PSD2 228"
+      "source: 228"
     ]
   },
   {
@@ -997,7 +997,7 @@
     "scope": "The verifier",
     "policy_description": "They should also provide an opinion on the rationale of excluding the requirements which haven’t been implemented.",
     "reference": [
-      "source: PSD2 230"
+      "source: 230"
     ]
   },
   {
@@ -1005,7 +1005,7 @@
     "scope": "Certifying organizations",
     "policy_description": "Certifying organizations can choose their testing methods but should disclose them in the report and this should ideally be repeatable.",
     "reference": [
-      "source: PSD2 232"
+      "source: 232"
     ]
   },
   {
@@ -1013,7 +1013,7 @@
     "scope": "Merely running an automated tool without thorough testing",
     "policy_description": "Merely running an automated tool without thorough testing is insufficient for certification, as each requirement must be verifiably tested.",
     "reference": [
-      "source: PSD2 238"
+      "source: 238"
     ]
   },
   {
@@ -1021,7 +1021,7 @@
     "scope": "“black box” (no documentation and no source) testing",
     "policy_description": "Whilst L1 in version 4.0 was optimized for “black box” (no documentation and no source) testing to occur, even then the standard was clear that it is not an effective assurance activity and should be actively discouraged.",
     "reference": [
-      "source: PSD2 251"
+      "source: 251"
     ]
   },
   {
@@ -1029,7 +1029,7 @@
     "scope": "penetration testing",
     "policy_description": "It is strongly encouraged to perform documentation or source code-led (hybrid) penetration testing, which have full access to the application developers and the application’s documentation, rather than traditional penetration tests.",
     "reference": [
-      "source: PSD2 253"
+      "source: 253"
     ]
   },
   {
@@ -1037,7 +1037,7 @@
     "scope": "organizations",
     "policy_description": "Therefore, organizations are encouraged to achieve the level that they feel like they should be achieving based on their maturity and the message they want to send to their users.",
     "reference": [
-      "source: PSD2 323"
+      "source: 323"
     ]
   },
   {
@@ -1045,7 +1045,7 @@
     "scope": "modern web applications",
     "policy_description": "For modern web applications, it is always best to use safer APIs, such as parameterized queries, auto-escaping, or templating frameworks.",
     "reference": [
-      "source: PSD2 328"
+      "source: 328"
     ]
   },
   {
@@ -1053,7 +1053,7 @@
     "scope": "If safer APIs are not used",
     "policy_description": "Otherwise, carefully performed output encoding, escaping, or sanitization becomes critical to the application’s security.",
     "reference": [
-      "source: PSD2 329"
+      "source: 329"
     ]
   },
   {
@@ -1061,7 +1061,7 @@
     "scope": "deserialization mechanisms",
     "policy_description": "For each mechanism in use, careful due diligence should be performed.",
     "reference": [
-      "source: PSD2 359"
+      "source: 359"
     ]
   },
   {
@@ -1069,7 +1069,7 @@
     "scope": "JSON Schema validation",
     "policy_description": "When using JSON Schema validation, ensure there are no gaps with the guidance in the requirements below.",
     "reference": [
-      "source: PSD2 394"
+      "source: 394"
     ]
   },
   {
@@ -1077,7 +1077,7 @@
     "scope": "JSON Schema validation libraries",
     "policy_description": "Any JSON Schema validation libraries in use should also be monitored and updated if necessary once the standard is formalized.",
     "reference": [
-      "source: PSD2 395"
+      "source: 395"
     ]
   },
   {
@@ -1085,7 +1085,7 @@
     "scope": "DTD validation",
     "policy_description": "DTD validation should not be used, and framework DTD evaluation should be disabled, to avoid issues with XXE attacks against DTDs.",
     "reference": [
-      "source: PSD2 396"
+      "source: 396"
     ]
   },
   {
@@ -1093,7 +1093,7 @@
     "scope": "L2 applications",
     "policy_description": "L2 applications must force the use of multi-factor authentication (MFA).",
     "reference": [
-      "source: PSD2 522"
+      "source: 522"
     ]
   },
   {
@@ -1101,7 +1101,7 @@
     "scope": "L3 applications",
     "policy_description": "L3 applications must use hardware-based authentication, performed in an attested and trusted execution environment (TEE).",
     "reference": [
-      "source: PSD2 523"
+      "source: 523"
     ]
   },
   {
@@ -1109,7 +1109,7 @@
     "scope": "Unsafe out-of-band authentication mechanisms such as e-mail and VOIP",
     "policy_description": "Unsafe out-of-band authentication mechanisms such as e-mail and VOIP are not permitted.",
     "reference": [
-      "source: PSD2 551"
+      "source: 551"
     ]
   },
   {
@@ -1117,7 +1117,7 @@
     "scope": "PSTN and SMS authentication",
     "policy_description": "PSTN and SMS authentication are currently considered to be “restricted” authentication mechanisms by NIST and should be deprecated in favor of Time based One-time Passwords (TOTPs), a cryptographic mechanism, or similar.",
     "reference": [
-      "source: PSD2 552"
+      "source: 552"
     ]
   },
   {
@@ -1125,7 +1125,7 @@
     "scope": "Where shared or secret keys are used for cryptographic authentication",
     "policy_description": "Where shared or secret keys are used for cryptographic authentication, these should be stored using the same mechanisms as other system secrets, as documented in the “Secret Management” section in the “Configuration” chapter.",
     "reference": [
-      "source: PSD2 562"
+      "source: 562"
     ]
   },
   {
@@ -1133,7 +1133,7 @@
     "scope": "Organizations",
     "policy_description": "Organizations should consider integrating with existing user identities, as per the risk profile of the IdP’s strength of identity proofing.",
     "reference": [
-      "source: PSD2 568"
+      "source: 568"
     ]
   },
   {
@@ -1141,7 +1141,7 @@
     "scope": "session handling",
     "policy_description": "A risk analysis with documented security decisions related to session handling must be conducted as a prerequisite to implementation and testing.",
     "reference": [
-      "source: PSD2 600"
+      "source: 600"
     ]
   },
   {
@@ -1149,7 +1149,7 @@
     "scope": "stateful or “stateless” session mechanism",
     "policy_description": "Regardless of whether a stateful or “stateless” session mechanism is chosen, the analysis must be complete and documented to demonstrate that the selected solution is capable of satisfying all relevant security requirements.",
     "reference": [
-      "source: PSD2 602"
+      "source: 602"
     ]
   },
   {
@@ -1157,7 +1157,7 @@
     "scope": "Interaction with any Single Sign-on (SSO) mechanisms",
     "policy_description": "Interaction with any Single Sign-on (SSO) mechanisms in use should also be considered.",
     "reference": [
-      "source: PSD2 603"
+      "source: 603"
     ]
   },
   {
@@ -1165,7 +1165,7 @@
     "scope": "Access tokens",
     "policy_description": "Access tokens, which shall only be consumed by the RS and can either be reference tokens that are validated using introspection or self-contained tokens that are validated using some key material.",
     "reference": [
-      "source: PSD2 710"
+      "source: 710"
     ]
   },
   {
@@ -1173,7 +1173,7 @@
     "scope": "Refresh tokens",
     "policy_description": "Refresh tokens, which shall only be consumed by the authorization server that issued the token.",
     "reference": [
-      "source: PSD2 711"
+      "source: 711"
     ]
   },
   {
@@ -1181,7 +1181,7 @@
     "scope": "OIDC ID Tokens",
     "policy_description": "OIDC ID Tokens, which shall only be consumed by the client that triggered the authorization flow.",
     "reference": [
-      "source: PSD2 712"
+      "source: 712"
     ]
   },
   {
@@ -1189,8 +1189,8 @@
     "scope": "OAuth and OIDC",
     "policy_description": "Even if RFCs are considered mature, they are updated frequently. Thus, it is important to align with the latest versions when applying the requirements in this chapter.",
     "reference": [
-      "source: PSD2 703",
-      "source: PSD2 704"
+      "source: 703",
+      "source: 704"
     ]
   },
   {
@@ -1198,7 +1198,7 @@
     "scope": "OAuth or OIDC solution",
     "policy_description": "Given the complexity of the area, it is vitally important for a secure OAuth or OIDC solution to use well-known industry-standard authorization servers and apply the recommended security configuration.",
     "reference": [
-      "source: PSD2 706"
+      "source: 706"
     ]
   },
   {
@@ -1206,9 +1206,9 @@
     "scope": "resource server",
     "policy_description": "To provide secure access, the resource server must: Validate the access token, according to the token format and relevant protocol specifications, e.g., JWT-validation or OAuth token introspection. If valid, enforce authorization decisions based on the information from the access token and permissions which have been granted.",
     "reference": [
-      "source: PSD2 725",
-      "source: PSD2 726",
-      "source: PSD2 727"
+      "source: 725",
+      "source: 726",
+      "source: 727"
     ]
   },
   {
@@ -1216,7 +1216,7 @@
     "scope": "client authentication",
     "policy_description": "For client authentication, the ‘self_signed_tls_client_auth’ method is allowed with the prerequisites required by section 2.2 of RFC 8705.",
     "reference": [
-      "source: PSD2 733"
+      "source: 733"
     ]
   },
   {
@@ -1224,7 +1224,7 @@
     "scope": "cryptographic assets",
     "policy_description": "It is important to ensure that all cryptographic assets are regularly discovered, inventoried, and assessed.",
     "reference": [
-      "source: PSD2 787"
+      "source: 787"
     ]
   },
   {
@@ -1232,7 +1232,7 @@
     "scope": "cryptographic component",
     "policy_description": "Organizations must ensure that each cryptographic component is selected based on peer-reviewed evidence and practical security testing.",
     "reference": [
-      "source: PSD2 796"
+      "source: 796"
     ]
   },
   {
@@ -1240,7 +1240,7 @@
     "scope": "TLS configuration",
     "policy_description": "Up-to-date tools should be used to review TLS configuration on an ongoing basis.",
     "reference": [
-      "source: PSD2 835"
+      "source: 835"
     ]
   },
   {
@@ -1248,7 +1248,7 @@
     "scope": "TLS certificates",
     "policy_description": "Proper protection, management, and the use of separate TLS certificates in different environments should be employed if possible.",
     "reference": [
-      "source: PSD2 837"
+      "source: 837"
     ]
   },
   {
@@ -1256,7 +1256,7 @@
     "scope": "configuration to interact securely with these components",
     "policy_description": "In either case, it is necessary to configure the application to interact securely with these components and, if required, protect that configuration.",
     "reference": [
-      "source: PSD2 864"
+      "source: 864"
     ]
   },
   {
@@ -1264,7 +1264,7 @@
     "scope": "Production configurations",
     "policy_description": "Production configurations should be hardened to avoid disclosing unnecessary data.",
     "reference": [
-      "source: PSD2 872"
+      "source: 872"
     ]
   },
   {
@@ -1272,7 +1272,7 @@
     "scope": "determining what is “abnormal”",
     "policy_description": "Each system’s requirements are likely to be very different, so determining what is “abnormal” must consider the threat model and business risk.",
     "reference": [
-      "source: PSD2 885"
+      "source: 885"
     ]
   },
   {
@@ -1280,7 +1280,7 @@
     "scope": "privacy regulations and laws",
     "policy_description": "Please consult local laws and regulations, and consult a qualified privacy specialist or lawyer as required.",
     "reference": [
-      "source: PSD2 892"
+      "source: 892"
     ]
   },
   {
@@ -1288,7 +1288,7 @@
     "scope": "Where field access depends on a user’s permissions",
     "policy_description": "Where field access depends on a user’s permissions, this should be considered in the context of the field-level access control requirement in the Authorization chapter.",
     "reference": [
-      "source: PSD2 937"
+      "source: 937"
     ]
   },
   {
@@ -1296,7 +1296,7 @@
     "scope": "Logs",
     "policy_description": "Logs should not include sensitive personal data unless legally required, and any logged data must be protected as a high-value asset.",
     "reference": [
-      "source: PSD2 953"
+      "source: 953"
     ]
   },
   {
@@ -1304,7 +1304,7 @@
     "scope": "Logging",
     "policy_description": "Logging must not compromise privacy or system security.",
     "reference": [
-      "source: PSD2 954"
+      "source: 954"
     ]
   },
   {
@@ -1312,7 +1312,7 @@
     "scope": "Applications",
     "policy_description": "Applications must also fail securely, avoiding unnecessary disclosure or disruption.",
     "reference": [
-      "source: PSD2 954"
+      "source: 954"
     ]
   },
   {
@@ -1320,7 +1320,7 @@
     "scope": "logging sensitive data",
     "policy_description": "Therefore, it is critical to log only what is necessary and to treat log data with the same care as other sensitive assets.",
     "reference": [
-      "source: PSD2 964"
+      "source: 964"
     ]
   },
   {
@@ -1328,8 +1328,8 @@
     "scope": "Certain languages, (including Swift, Go, and through common design practice, many functional languages,) do not support exceptions or last-resort event handlers",
     "policy_description": "In this case, architects and developers should use a pattern, language, or framework-friendly way to ensure that applications can securely handle exceptional, unexpected, or security-related events.",
     "reference": [
-      "source: PSD2 982",
-      "source: PSD2 983"
+      "source: 982",
+      "source: 983"
     ]
   },
   {
@@ -1337,7 +1337,7 @@
     "scope": "WebRTC media servers",
     "policy_description": "In particular, it is necessary to implement protections against flood attacks such as rate limiting, validating timestamps, using synchronized clocks to match real-time intervals, and managing buffers to prevent overflow and maintain proper timing.",
     "reference": [
-      "source: PSD2 1016"
+      "source: 1016"
     ]
   },
   {
@@ -1345,7 +1345,7 @@
     "scope": "WebRTC media servers",
     "policy_description": "If packets for a particular media session arrive too quickly, excess packets should be dropped.",
     "reference": [
-      "source: PSD2 1017"
+      "source: 1017"
     ]
   },
   {
@@ -1353,7 +1353,7 @@
     "scope": "WebRTC media servers",
     "policy_description": "It is also important to protect the system from malformed packets by implementing input validation, safely handling integer overflows, preventing buffer overflows, and employing other robust error-handling techniques.",
     "reference": [
-      "source: PSD2 1018"
+      "source: 1018"
     ]
   },
   {
@@ -1361,7 +1361,7 @@
     "scope": "Disallowed mechanisms (D)",
     "policy_description": "Disallowed mechanisms (D) must not be used because they are currently considered broken or do not provide sufficient security.",
     "reference": [
-      "source: PSD2 1200"
+      "source: 1200"
     ]
   },
   {
@@ -1369,7 +1369,7 @@
     "scope": "cryptographic assets, such as algorithms, keys, and certificates",
     "policy_description": "It is important to ensure that all cryptographic assets, such as algorithms, keys, and certificates, are regularly discovered, inventoried, and assessed.",
     "reference": [
-      "source: PSD2 1206"
+      "source: 1206"
     ]
   },
   {
@@ -1377,7 +1377,7 @@
     "scope": "Level 3",
     "policy_description": "For Level 3, this should include the use of static and dynamic scanning to discover the use of cryptography in an application.",
     "reference": [
-      "source: PSD2 1207"
+      "source: 1207"
     ]
   },
   {
@@ -1385,7 +1385,7 @@
     "scope": "HMAC-DRBG or Hash-DRBG",
     "policy_description": "The underlying hash function used with HMAC-DRBG or Hash-DRBG must be approved for this usage.",
     "reference": [
-      "source: PSD2 1224"
+      "source: 1224"
     ]
   },
   {
@@ -1393,7 +1393,7 @@
     "scope": "Many modes of operations, such as Electronic codebook (ECB)",
     "policy_description": "Many modes of operations, such as Electronic codebook (ECB), are insecure and must not be used.",
     "reference": [
-      "source: PSD2 1231"
+      "source: 1231"
     ]
   },
   {
@@ -1401,7 +1401,7 @@
     "scope": "Galois/Counter Mode (GCM) and Counter with cipher block chaining message authentication code (CCM) modes of operations",
     "policy_description": "The Galois/Counter Mode (GCM) and Counter with cipher block chaining message authentication code (CCM) modes of operations provide authenticated encryption and should be used in modern applications.",
     "reference": [
-      "source: PSD2 1232"
+      "source: 1232"
     ]
   },
   {
@@ -1409,7 +1409,7 @@
     "scope": "All encrypted messages",
     "policy_description": "All encrypted messages must be authenticated.",
     "reference": [
-      "source: PSD2 1236"
+      "source: 1236"
     ]
   },
   {
@@ -1417,7 +1417,7 @@
     "scope": "ANY use of CBC mode",
     "policy_description": "For ANY use of CBC mode there MUST be an associated hashing MAC algorithm to validate the message.",
     "reference": [
-      "source: PSD2 1236"
+      "source: 1236"
     ]
   },
   {
@@ -1425,8 +1425,8 @@
     "scope": "CBC mode",
     "policy_description": "In general, this MUST be applied in the Encrypt-Then-Hash method (but TLS 1.2 uses Hash-Then-Encrypt instead). If this cannot be guaranteed, then CBC MUST NOT be used.",
     "reference": [
-      "source: PSD2 1237",
-      "source: PSD2 1238"
+      "source: 1237",
+      "source: 1238"
     ]
   },
   {
@@ -1434,7 +1434,7 @@
     "scope": "CBC",
     "policy_description": "If CBC is used, it shall be guaranteed that the verification of the padding is performed in constant time.",
     "reference": [
-      "source: PSD2 1240"
+      "source: 1240"
     ]
   },
   {
@@ -1442,7 +1442,7 @@
     "scope": "key wrapping",
     "policy_description": "Specifically, AES-256 MUST be used for key wrapping, following NIST SP 800-38F and considering forward-looking provisions against the quantum threat.",
     "reference": [
-      "source: PSD2 1251"
+      "source: 1251"
     ]
   },
   {
@@ -1450,7 +1450,7 @@
     "scope": "AES-192 and AES-128",
     "policy_description": "AES-192 and AES-128 MAY be used if the use case demands it, but its motivation MUST be documented in the entity’s cryptography inventory.",
     "reference": [
-      "source: PSD2 1254"
+      "source: 1254"
     ]
   },
   {
@@ -1458,7 +1458,7 @@
     "scope": "encrypted data",
     "policy_description": "With the exception of disk encryption, encrypted data must be protected against unauthorized modification using some form of authenticated encryption (AE) scheme, usually using an authenticated encryption with associated data (AEAD) scheme.",
     "reference": [
-      "source: PSD2 1256"
+      "source: 1256"
     ]
   },
   {
@@ -1466,7 +1466,7 @@
     "scope": "The application",
     "policy_description": "The application should preferably use an approved AEAD scheme.",
     "reference": [
-      "source: PSD2 1257"
+      "source: 1257"
     ]
   },
   {
@@ -1474,7 +1474,7 @@
     "scope": "Hash function with less than 254 bit of output",
     "policy_description": "Hash function with less than 254 bit of output have insufficient collision resistancea and must not be used for digital signature or other applications requiring collision resistance.",
     "reference": [
-      "source: PSD2 1266"
+      "source: 1266"
     ]
   },
   {
@@ -1482,7 +1482,7 @@
     "scope": "Hash function with less than 254 bit of output",
     "policy_description": "For other usages, they might be used for compatibility and verification ONLY with legacy systems but must not be used in new designs.",
     "reference": [
-      "source: PSD2 1267"
+      "source: 1267"
     ]
   },
   {
@@ -1490,7 +1490,7 @@
     "scope": "secure password hashing",
     "policy_description": "For secure password hashing, dedicated hash functions must be used.",
     "reference": [
-      "source: PSD2 1270"
+      "source: 1270"
     ]
   },
   {
@@ -1498,7 +1498,7 @@
     "scope": "Key Exchange schemes",
     "policy_description": "A security strength of 112 bits or above MUST be ensured for all Key Exchange schemes, and their implementation MUST follow the parameter choices in the following table.",
     "reference": [
-      "source: PSD2 1282"
+      "source: 1282"
     ]
   },
   {
@@ -1506,7 +1506,7 @@
     "scope": "Any new implementation",
     "policy_description": "Any new implementation MUST NOT use any scheme that is NOT compliant with NIST SP 800-56A & B and NIST SP 800-77.",
     "reference": [
-      "source: PSD2 1288"
+      "source: 1288"
     ]
   },
   {
@@ -1514,7 +1514,7 @@
     "scope": "IKEv1",
     "policy_description": "Specifically, IKEv1 MUST NOT be used in production.",
     "reference": [
-      "source: PSD2 1289"
+      "source: 1289"
     ]
   },
   {
@@ -1522,7 +1522,7 @@
     "scope": "Signature schemes",
     "policy_description": "Signature schemes MUST use approved key sizes and parameters per NIST SP 800-57 Part 1.",
     "reference": [
-      "source: PSD2 1300"
+      "source: 1300"
     ]
   },
   {
@@ -1530,7 +1530,7 @@
     "scope": "PQC implementations",
     "policy_description": "PQC implementations must be in line with FIPS-203/204/205 as there is minimal hardened code nor implementation reference yet.",
     "reference": [
-      "source: PSD2 1303"
+      "source: 1303"
     ]
   },
   {
@@ -1538,7 +1538,7 @@
     "scope": "mlkem768x25519 post-quantum hybrid TLS key agreement method",
     "policy_description": "It may be used in cryptographic testing environments or when available within industry- or government-approved libraries.",
     "reference": [
-      "source: PSD2 1304"
+      "source: 1304"
     ]
   }
 ]

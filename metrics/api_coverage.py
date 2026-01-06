@@ -332,19 +332,19 @@ def main():
             'name': 'Teladoc',
             'api_doc_path': '../utils/API_docs/ToolEmu/Teladoc/doc.json',
             'ltl_rules_path': '../ltl_generator/results/hipaa/5_filtered_ltl_rules.json',
-            'policy_path': '../utils/policies/hipaa.json'
+            'policy_path': '../ltl_generator/results/hipaa/0_relevant_policies.json'
         },
         {
             'name': 'BankManager',
             'api_doc_path': '../utils/API_docs/ToolEmu/BankManager/doc.json',
             'ltl_rules_path': '../ltl_generator/results/psd2/5_filtered_ltl_rules.json',
-            'policy_path': '../utils/policies/psd2.json'
+            'policy_path': '../ltl_generator/results/psd2/0_relevant_policies.json.json'
         },
         {
             'name': 'AugustSmartLock',
             'api_doc_path': '../utils/API_docs/ToolEmu/AugustSmartLock/doc.json',
             'ltl_rules_path': '../ltl_generator/results/esti/5_filtered_ltl_rules.json',
-            'policy_path': '../utils/policies/esti.json'
+            'policy_path': '../ltl_generator/results/esti/0_relevant_policies.json.json'
         }
     ]
 

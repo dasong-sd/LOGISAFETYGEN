@@ -46,21 +46,21 @@ SCENARIO_CONFIG = {
     "bank_manager": {
         "ground_truth": "results/ground_truth_data/bank_manager_ground_truth_cases.json",
         "prompts": "results/benchmark_data/labeled_bank_manager_dataset.json", 
-        "policy": "utils/policies/psd2.json",
+        "policy": "ltl_generator/results/psd2/0_relevant_policies.json",
         "ltl": "ltl_generator/results/psd2/7_label_ltl_rules.json",
         "api_doc": "utils/API_docs/ToolEmu/BankManager/doc.json"
     },
     "teladoc": {
         "ground_truth": "results/ground_truth_data/teladoc_ground_truth_cases.json",
         "prompts": "results/benchmark_data/labeled_teladoc_dataset.json",
-        "policy": "utils/policies/hipaa.json",
+        "policy": "ltl_generator/results/hipaa/0_relevant_policies.json",
         "ltl": "ltl_generator/results/hipaa/7_label_ltl_rules.json",
         "api_doc": "utils/API_docs/ToolEmu/Teladoc/doc.json"
     },
     "smart_lock": {
         "ground_truth": "results/ground_truth_data/smart_lock_ground_truth_cases.json",
         "prompts": "results/benchmark_data/labeled_smart_lock_dataset.json",
-        "policy": "utils/policies/esti.json",
+        "policy": "ltl_generator/results/esti/0_relevant_policies.json",
         "ltl": "ltl_generator/results/esti/7_label_ltl_rules.json",
         "api_doc": "utils/API_docs/ToolEmu/AugustSmartLock/doc.json"
     }

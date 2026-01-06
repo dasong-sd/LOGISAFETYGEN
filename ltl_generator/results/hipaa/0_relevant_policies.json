@@ -148,9 +148,9 @@
       "policy": {
         "policy_description": "Before returning data for a specific record (e.g., via AccessMedicalHistory), the system must verify that the authenticated user is authorized to access *that specific record*.",
         "scope": "Object Level Authorization",
-        "definition": "Based on OWASP AVAS. Prevents users from accessing specific data objects they shouldn't.",
+        "definition": "Based on HIPAA-Sec. Prevents users from accessing specific data objects they shouldn't.",
         "reference": {
-          "source_id": "OWASP-AVAS"
+          "source_id": "HIPAA-Sec"
         }
       }
     },
@@ -159,9 +159,9 @@
       "policy": {
         "policy_description": "API endpoints performing sensitive actions (e.g., ScheduleAppointment, ManageAppointments(action='cancel')) must verify the user has the specific permissions required for *that action*.",
         "scope": "Function Level Authorization",
-        "definition": "Based on OWASP AVAS. Ensures users can only perform actions they are permitted to.",
+        "definition": "Based on HIPAA-Sec. Ensures users can only perform actions they are permitted to.",
         "reference": {
-          "source_id": "OWASP-AVAS"
+          "source_id": "HIPAA-Sec"
         }
       }
     },

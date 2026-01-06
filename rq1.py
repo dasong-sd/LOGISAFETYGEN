@@ -31,7 +31,6 @@ CRITICAL_APIS: Dict[str, Set[str]] = {
 }
 
 # Paths
-BASE_POLICY_DIR = "utils/policies"
 RESULTS_DIR = "ltl_generator/results"
 ATC_TREND_DIR = "results/ground_truth_data"
 BASELINE_OUTPUT_DIR = "results/rq1_baseline_data_gpt5"
@@ -233,11 +232,10 @@ def get_llm_baseline_data(scenario_config: Dict, client: OpenAI, all_apis: List[
     print(f"   [Cache Miss] Generating {LLM_BUDGET} new LLM samples...")
     api_doc = load_json_file(scenario_config['api_doc_path'])
     with open(scenario_config['api_doc_path'], 'r') as f: api_doc_str = f.read()
-    with open(scenario_config['policy_path'], 'r') as f: policy_str = f.read()
 
     for i in range(LLM_BUDGET):
         print(f"\r   Generation {i+1}/{LLM_BUDGET}...", end="")
-        code = generate_baseline_test_case(client, api_doc_str, policy_str)
+        code = generate_baseline_test_case(client, api_doc_str)
         trace = extract_trace_from_code(code, all_apis)
         
         llm_atc_calc.add_trace(trace)
@@ -263,34 +261,6 @@ def get_fuzzer_critical_coverage(scenario_config: Dict, all_apis: List[str], cri
 # ======================================================================
 # 6. ANALYSIS & PLOTTING
 # ======================================================================
-
-def save_rq1_policy_stats(scenarios: List[Dict[str, str]]) -> None:
-    stats_data = []
-    print(f"Collecting Policy Stats...")
-    for sc in scenarios:
-        row = {"scenario": sc["name"]}
-        policy_path = os.path.join(BASE_POLICY_DIR, f"{sc['policy_file']}.json")
-        base_data = load_json_file(policy_path)
-        total_words = 0
-        total_base_policies = 0
-        if base_data:
-            policy_list = base_data if isinstance(base_data, list) else base_data.get("policies", [])
-            total_base_policies = len(policy_list)
-            for p in policy_list: total_words += count_words(p.get("policy_description", ""))
-        
-        row["base_policy_count"] = total_base_policies
-        row["total_word_count"] = total_words
-        res_dir = os.path.join(RESULTS_DIR, sc["dir"])
-        row["rag_relevant_count"] = get_list_count(load_json_file(os.path.join(res_dir, "0_relevant_policies.json")))
-        row["final_selected_count"] = get_list_count(load_json_file(os.path.join(res_dir, "2_final_policies.json")), key="final_policies")
-        row["generated_ltl_count"] = get_list_count(load_json_file(os.path.join(res_dir, "3_final_ltl_rules.json")))
-        row["filtered_ltl_count"] = get_list_count(load_json_file(os.path.join(res_dir, "5_filtered_ltl_rules.json")))
-        row["valid_ltl_count"] = get_list_count(load_json_file(os.path.join(res_dir, "7_label_ltl_rules.json")), key="valid_ltl_rules")
-        stats_data.append(row)
-
-    output_path = os.path.join(BASELINE_OUTPUT_DIR, "policy_filtering_stats.json")
-    with open(output_path, 'w') as f: json.dump(stats_data, f, indent=4)
-    print(f"✅ Policy stats saved to: {output_path}")
 
 def run_analysis_for_scenario(scenario_config: Dict[str, str], client: OpenAI):
     name = scenario_config['name']
@@ -394,7 +364,6 @@ def main():
             "policy_file": "psd2", "dir": "psd2",
             "api_doc_path": "utils/API_docs/ToolEmu/BankManager/doc.json",
             "ltl_rules_path": "ltl_generator/results/psd2/7_label_ltl_rules.json",
-            "policy_path": "utils/policies/psd2.json",
             "labeled_data_path": "results/benchmark_data/labeled_bank_manager_dataset.json",
             "ground_truth_path": "results/ground_truth_data/bank_manager_ground_truth_cases.json"
         },
@@ -403,7 +372,6 @@ def main():
             "policy_file": "hipaa", "dir": "hipaa",
             "api_doc_path": "utils/API_docs/ToolEmu/Teladoc/doc.json",
             "ltl_rules_path": "ltl_generator/results/hipaa/7_label_ltl_rules.json",
-            "policy_path": "utils/policies/hipaa.json",
             "labeled_data_path": "results/benchmark_data/labeled_teladoc_dataset.json",
             "ground_truth_path": "results/ground_truth_data/teladoc_ground_truth_cases.json"
         },
@@ -412,20 +380,11 @@ def main():
             "policy_file": "esti", "dir": "esti",
             "api_doc_path": "utils/API_docs/ToolEmu/AugustSmartLock/doc.json",
             "ltl_rules_path": "ltl_generator/results/esti/7_label_ltl_rules.json",
-            "policy_path": "utils/policies/esti.json",
             "labeled_data_path": "results/benchmark_data/labeled_smart_lock_dataset.json",
             "ground_truth_path": "results/ground_truth_data/smart_lock_ground_truth_cases.json"
         }
     ]
-
-    # 1. Save Policy Statistics
-    save_rq1_policy_stats(SCENARIOS)
-
-    print(f"{'='*60}")
-    print(f"RQ1: Baseline Comparison (Cached & Visualized)")
-    print(f"{'='*60}")
     
-    # 2. Run Coverage Analysis
     for sc in SCENARIOS:
         run_analysis_for_scenario(sc, client)
 
