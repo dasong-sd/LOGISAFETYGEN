@@ -125,7 +125,7 @@ def generate_ground_truth_traces(api_doc_name: str, filtered_rules_file: str, ou
     logger.info(f"Starting LTL-GUIDED fuzzing. Goal: {num_to_generate} test cases with ~{num_of_apis} API calls each.")
     
     generated_count = 0
-    max_attempts = num_to_generate * 200 # (Same as your file)
+    max_attempts = num_to_generate * 200
 
     for attempt in range(1, max_attempts + 1):
         if generated_count >= num_to_generate:
@@ -208,7 +208,7 @@ if __name__ == "__main__":
     # Define output filename based on scenario
     output_filename = f"{args.scenario}_ground_truth_cases.json"
         
-    # Map scenario to its LTL rules file (paths from your guided_trace_generation.py)
+    # Map scenario to its LTL rules file
     if args.scenario == "bank_manager":
         rules_file = "ltl_generator/results/psd2/7_label_ltl_rules.json"
     elif args.scenario == "smart_lock":
